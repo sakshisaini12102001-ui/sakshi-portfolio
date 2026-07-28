@@ -30,7 +30,7 @@ const BUILDS = [
     tag: 'Custom WordPress',
     desc: 'Fully custom WordPress build on a hand-rolled PHP template for an industrial crane manufacturer.',
     stack: 'WordPress · PHP · Custom Template',
-    accent: '#1f4b8f',
+    accent: '#6c3bf5',
     icon: 'industrial',
   },
   {
@@ -39,7 +39,7 @@ const BUILDS = [
     tag: 'WordPress',
     desc: 'Product portfolio site for decorative laminates — rebuilt navigation and layout for faster browsing.',
     stack: 'WordPress · HTML5 · CSS3',
-    accent: '#d97f0c',
+    accent: '#ff5470',
     icon: 'layers',
   },
   {
@@ -48,7 +48,7 @@ const BUILDS = [
     tag: 'WordPress',
     desc: 'Corporate site for a drilling equipment company, optimised for performance and mobile.',
     stack: 'WordPress · Responsive',
-    accent: '#2f7a4f',
+    accent: '#00c2a8',
     icon: 'drill',
   },
   {
@@ -57,7 +57,7 @@ const BUILDS = [
     tag: 'WordPress',
     desc: 'Business site with a clean UI and cross-device layout, customised and deployed end to end.',
     stack: 'WordPress · Cross-device QA',
-    accent: '#1f4b8f',
+    accent: '#ffb220',
     icon: 'wire',
   },
   {
@@ -66,7 +66,7 @@ const BUILDS = [
     tag: 'WooCommerce',
     desc: 'Online bookstore for engineering, medical and agriculture titles, built for students across India.',
     stack: 'WordPress · WooCommerce',
-    accent: '#7a3fae',
+    accent: '#6c3bf5',
     icon: 'book',
   },
   {
@@ -75,7 +75,7 @@ const BUILDS = [
     tag: 'Shopify',
     desc: 'Home furnishings storefront with custom theme elements and a conversion-tuned checkout.',
     stack: 'Shopify · Liquid',
-    accent: '#d97f0c',
+    accent: '#ff5470',
     icon: 'home',
   },
   {
@@ -84,7 +84,7 @@ const BUILDS = [
     tag: 'Shopify',
     desc: 'Kids & lifestyle storefront — mobile-first, with custom product pages and payment integration.',
     stack: 'Shopify · Liquid',
-    accent: '#2f7a4f',
+    accent: '#00c2a8',
     icon: 'cube',
   },
 ];
@@ -145,8 +145,8 @@ const EXPERIENCE = [
 ];
 
 function Icon({ type }) {
-  const stroke = 'rgba(255,255,255,0.9)';
-  const common = { fill: 'none', stroke, strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  const stroke = '#ffffff';
+  const common = { fill: 'none', stroke, strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round' };
   switch (type) {
     case 'industrial':
       return (
@@ -232,9 +232,13 @@ export default function Home() {
 
       <section className="hero grid-field">
         <div className="wrap">
-          <span className="hero-kicker">Jaipur, India · Open to new builds</span>
+          <span className="eyebrow" style={{ marginBottom: 24 }}>
+            Jaipur, India · Open to new builds
+          </span>
           <h1>
-            WordPress &amp; front-end developer who ships <em>production</em> sites, not drafts.
+            WordPress &amp; front-end developer who ships{' '}
+            <mark className="hl hl-violet">production</mark> sites —{' '}
+            <mark className="hl hl-coral">not drafts</mark>.
           </h1>
           <p className="hero-sub">
             3+ years building LMS platforms, WooCommerce stores and Shopify fronts for
