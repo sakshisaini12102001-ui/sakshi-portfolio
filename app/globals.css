@@ -337,8 +337,19 @@ h1, h2, h3 {
   padding: 26px 28px;
   box-shadow: var(--shadow-sm);
   position: relative;
+  z-index: 1;
 }
-.exp-card + .exp-card { margin-top: 22px; }
+.exp-card + .exp-card { margin-top: 30px; }
+.exp-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 51px;
+  top: 100%;
+  width: 2px;
+  height: 30px;
+  background-image: repeating-linear-gradient(to bottom, var(--violet) 0 5px, transparent 5px 10px);
+  z-index: 0;
+}
 .exp-icon {
   width: 46px;
   height: 46px;
@@ -349,6 +360,8 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 .exp-icon svg { width: 20px; height: 20px; }
 .exp-body { flex: 1; }
