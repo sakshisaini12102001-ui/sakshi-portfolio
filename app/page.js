@@ -1,5 +1,6 @@
 import { Poppins, Inter } from 'next/font/google';
 import Projects from './components/Projects';
+import ExperienceScroll from './components/ExperienceScroll';
 import Faq from './components/Faq';
 
 const display = Poppins({
@@ -74,15 +75,16 @@ const SERVICES = [
 
 const TECH = [
   { name: 'HTML5', bg: '#e34f26' },
-  { name: 'CSS3', bg: '#2965f1' },
+  { name: 'CSS3', bg: '#1572b6' },
   { name: 'JS', bg: '#f0b90b' },
-  { name: 'PHP', bg: '#6c4cff' },
+  { name: 'PHP', bg: '#777bb3' },
   { name: 'MySQL', bg: '#4479a1' },
   { name: 'WP', bg: '#21759b' },
   { name: 'Woo', bg: '#96588a' },
   { name: 'Boot', bg: '#7952b3' },
   { name: 'jQ', bg: '#0769ad' },
   { name: 'Git', bg: '#f05033' },
+  { name: 'Fig', bg: '#a259ff' },
 ];
 
 const EXPERIENCE = [
@@ -169,15 +171,6 @@ function ServiceIcon({ type }) {
     default:
       return null;
   }
-}
-
-function ExpIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="7" width="18" height="13" rx="2" />
-      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-    </svg>
-  );
 }
 
 function SocialIcon({ type }) {
@@ -320,25 +313,7 @@ export default function Home() {
             <span className="eyebrow">Experience</span>
             <h2 className="section-title">Where I've Worked</h2>
           </div>
-          <div className="exp-list">
-            {EXPERIENCE.map((e) => (
-              <div className="exp-card" key={e.title + e.period}>
-                <span className="exp-icon"><ExpIcon /></span>
-                <div className="exp-body">
-                  <div className="exp-top">
-                    <div className="exp-role">{e.title}</div>
-                    <span className="exp-period">{e.period}</span>
-                  </div>
-                  <div className="exp-org">{e.org}</div>
-                  <div className="exp-desc">
-                    <ul>
-                      {e.bullets.map((b, i) => <li key={i}>{b}</li>)}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ExperienceScroll items={EXPERIENCE} />
         </div>
       </section>
 

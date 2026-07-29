@@ -306,49 +306,111 @@ h1, h2, h3 {
 .tech-chip {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: var(--bg-card);
-  border-radius: 999px;
-  padding: 11px 20px;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 20px 12px 12px;
   box-shadow: var(--shadow-sm);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 14.5px;
+  font-weight: 700;
 }
 .tech-mono {
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   flex-shrink: 0;
+  letter-spacing: -0.02em;
 }
 
-/* ---------- Experience ---------- */
-.exp-list { display: flex; flex-direction: column; gap: 0; max-width: 760px; margin: 0 auto; }
+/* ---------- Experience (scroll-driven stepper) ---------- */
+.exp-scroll {
+  position: relative;
+  display: grid;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.exp-track {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+}
+.exp-marker {
+  height: 62vh;
+  min-height: 320px;
+}
+.exp-sticky-panel {
+  grid-column: 1;
+  grid-row: 1;
+  position: sticky;
+  top: 110px;
+  align-self: start;
+  height: fit-content;
+  display: flex;
+  gap: 22px;
+}
+.exp-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+.exp-rail-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.exp-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: none;
+  background: var(--line);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.exp-dot.filled { background: var(--violet); }
+.exp-dot.current { transform: scale(1.3); box-shadow: 0 0 0 4px var(--violet-soft); }
+.exp-connector {
+  width: 2px;
+  height: 64px;
+  background: var(--line);
+  margin: 4px 0;
+  position: relative;
+  overflow: hidden;
+}
+.exp-connector::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 0%;
+  background: var(--violet);
+  transition: height 0.4s ease;
+}
+.exp-connector.filled::after { height: 100%; }
+
 .exp-card {
   display: flex;
   gap: 20px;
   background: var(--bg-card);
   border-radius: var(--radius);
-  padding: 26px 28px;
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  z-index: 1;
+  padding: 28px 30px;
+  box-shadow: var(--shadow);
+  flex: 1;
+  animation: expFadeIn 0.45s ease both;
 }
-.exp-card + .exp-card { margin-top: 30px; }
-.exp-card:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 51px;
-  top: 100%;
-  width: 2px;
-  height: 30px;
-  background-image: repeating-linear-gradient(to bottom, var(--violet) 0 5px, transparent 5px 10px);
-  z-index: 0;
+@keyframes expFadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .exp-icon {
   width: 46px;
@@ -360,8 +422,6 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  position: relative;
-  z-index: 1;
 }
 .exp-icon svg { width: 20px; height: 20px; }
 .exp-body { flex: 1; }
@@ -380,6 +440,22 @@ h1, h2, h3 {
 .exp-desc { font-size: 13.5px; color: var(--ink-soft); margin-top: 10px; line-height: 1.65; }
 .exp-desc ul { margin: 0; padding-left: 18px; }
 .exp-desc li { margin-bottom: 4px; }
+.exp-progress-label {
+  position: absolute;
+  bottom: -34px;
+  left: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-faint);
+}
+@media (max-width: 640px) {
+  .exp-sticky-panel { flex-direction: column; top: 90px; }
+  .exp-rail { flex-direction: row; }
+  .exp-rail-step { flex-direction: row; }
+  .exp-connector { width: 40px; height: 2px; margin: 0 4px; }
+  .exp-connector::after { width: 0%; height: 100%; }
+  .exp-connector.filled::after { width: 100%; }
+}
 
 /* ---------- Projects (tabs + scroll preview) ---------- */
 .build-tabs {
