@@ -18,8 +18,8 @@
   --radius-sm: 12px;
   --shadow: 0 14px 34px -16px rgba(28, 27, 46, 0.22);
   --shadow-sm: 0 8px 20px -12px rgba(28, 27, 46, 0.18);
-  --font-display: var(--ff-display), 'Arial', sans-serif;
-  --font-body: var(--ff-body), 'Arial', sans-serif;
+  --font-display: var(--ff-display, 'Poppins'), 'Arial', sans-serif;
+  --font-body: var(--ff-body, 'Inter'), 'Arial', sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -448,20 +448,16 @@ h1, h2, h3 {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: #fff;
+  background: rgba(255,255,255,0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-sm);
   z-index: 2;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.build-card:hover .build-link-badge { opacity: 1; transform: translateY(0); }
 .build-link-badge svg { width: 15px; height: 15px; }
 .build-body { padding: 16px 18px 20px; }
 .build-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; }
