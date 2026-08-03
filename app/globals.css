@@ -74,9 +74,9 @@ h1, h2, h3 {
 .section-title {
   font-size: clamp(26px, 3.6vw, 36px);
   position: relative;
-  display: inline-block;
-  padding-bottom: 14px;
-}
+  display: block;
+  padding-bottom: 14px;}
+
 .section-title::after {
   content: '';
   position: absolute;
